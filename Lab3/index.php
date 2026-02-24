@@ -1,10 +1,8 @@
 <?php
-// Получаем текущий день недели (0 - воскресенье, 1 - понедельник и т.д.)
-$dayOfWeek = date('N'); // 1 (понедельник) до 7 (воскресенье)
+$dayOfWeek = date('N'); 
 
-// Функция для определения графика John Styles
+
 function getJohnStylesSchedule($day) {
-    // Понедельник (1), среда (3), пятница (5)
     if ($day == 1 || $day == 3 || $day == 5) {
         return '8:00-12:00';
     } else {
@@ -12,9 +10,8 @@ function getJohnStylesSchedule($day) {
     }
 }
 
-// Функция для определения графика Jane Doe
+
 function getJaneDoeSchedule($day) {
-    // Вторник (2), четверг (4), суббота (6)
     if ($day == 2 || $day == 4 || $day == 6) {
         return '12:00-16:00';
     } else {
@@ -22,7 +19,7 @@ function getJaneDoeSchedule($day) {
     }
 }
 
-// Получаем расписание
+
 $johnSchedule = getJohnStylesSchedule($dayOfWeek);
 $janeSchedule = getJaneDoeSchedule($dayOfWeek);
 ?>
@@ -83,3 +80,4 @@ $janeSchedule = getJaneDoeSchedule($dayOfWeek);
 
 </body>
 </html>
+
