@@ -1,7 +1,7 @@
 <?php
 // Цикл for
 
-echo "Cicle for\n\n";
+echo "Loop for\n\n";
 
 $a = 0;
 $b = 0;
@@ -18,7 +18,7 @@ echo "\n";
 
 // Цикл while
 
-echo "Cicle while\n\n";
+echo "Loop while\n\n";
 
 $a1 = 0;
 $b1 = 0;
@@ -36,7 +36,7 @@ echo "\n";
 
 // Цикл do-while
 
-echo "Cicle do-while\n\n";
+echo "Loop do-while\n\n";
 
 $a2 = 0;
 $b2 = 0;
