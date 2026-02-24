@@ -141,7 +141,7 @@ do {
 echo "End of the loop: a2 = $a2, b2 = $b2\n";
 ```
 
-[pic](images/doWhile.png)
+![pic](images/doWhile.png)
 
 ## Контрольные вопросы
 
