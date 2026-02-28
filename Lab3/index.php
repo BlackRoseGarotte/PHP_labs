@@ -1,27 +1,20 @@
 <?php
-$dayOfWeek = date('N'); 
+
+$dayOfWeek = date('N');
 
 
-function getJohnStylesSchedule($day) {
-    if ($day == 1 || $day == 3 || $day == 5) {
-        return '8:00-12:00';
-    } else {
-        return 'Нерабочий день';
-    }
+if ($dayOfWeek == 1 || $dayOfWeek == 3 || $dayOfWeek == 5) {
+    $johnSchedule = '8:00-12:00';
+} else {
+    $johnSchedule = 'Нерабочий день';
 }
 
 
-function getJaneDoeSchedule($day) {
-    if ($day == 2 || $day == 4 || $day == 6) {
-        return '12:00-16:00';
-    } else {
-        return 'Нерабочий день';
-    }
+if ($dayOfWeek == 2 || $dayOfWeek == 4 || $dayOfWeek == 6) {
+    $janeSchedule = '12:00-16:00';
+} else {
+    $janeSchedule = 'Нерабочий день';
 }
-
-
-$johnSchedule = getJohnStylesSchedule($dayOfWeek);
-$janeSchedule = getJaneDoeSchedule($dayOfWeek);
 ?>
 
 <!DOCTYPE html>
