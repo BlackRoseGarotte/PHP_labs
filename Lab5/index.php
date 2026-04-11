@@ -409,7 +409,7 @@ $sortedByAmount = $manager->sortTransactionsByAmountDesc();
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Транзакции ООП (с Интерфейсом)</title>
+    <title>Транзакции</title>
     <style>
         body { font-family: sans-serif; background: #f4f4f9; padding: 20px; color: #333; }
         h1, h2 { color: #2c3e50; }
@@ -424,7 +424,7 @@ $sortedByAmount = $manager->sortTransactionsByAmountDesc();
 </head>
 <body>
 
-<h1>Система управления транзакциями (ООП + Интерфейсы)</h1>
+<h1>Система управления транзакциями</h1>
 
 <div class="stats">
     <h2>Статистика</h2>
