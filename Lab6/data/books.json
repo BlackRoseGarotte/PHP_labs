@@ -28,5 +28,15 @@
         "price": 199,
         "is_featured": false,
         "created_at": "2026-04-07 21:19:30"
+    },
+    {
+        "title": "abc",
+        "author": "abc cba",
+        "isbn": "",
+        "publication_date": "2026-04-11",
+        "description": "jiwefhuy fskdhfysd fiewjfu idsjfudshf fsdjhfsdf fkdjsbfh kfshsdgf fkdsfjhsdfumkgfjn fksjhgnhsdb",
+        "price": 199,
+        "is_featured": true,
+        "created_at": "2026-04-11 09:29:50"
     }
 ]
