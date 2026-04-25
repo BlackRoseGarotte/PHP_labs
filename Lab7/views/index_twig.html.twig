@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Книжный магазин (Twig)</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Книжный магазин (Twig)</h1>
+        <a href="?engine=php" style="background:#333; color:#fff; padding:5px 10px; text-decoration:none; border-radius:4px;">Switch to PHP</a>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Добавить книгу</h2>
+            {% if success %}
+                <div class="alert success">Книга добавлена!</div>
+            {% endif %}
+
+            {% if errors is not empty %}
+                <ul class="alert error">
+                    {% for error in errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Action с параметром engine -->
+            <form action="?engine={{ engine }}" method="POST">
+                <div class="form-group">
+                    <label>Название *</label>
+                    <input type="text" name="title" required value="{{ _POST.title ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label>Автор *</label>
+                    <input type="text" name="author" required value="{{ _POST.author ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label>ISBN *</label>
+                    <input type="text" name="isbn" required pattern="^(97(8|9))?\d{9}(\d|X)?$" value="{{ _POST.isbn ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label>Дата *</label>
+                    <input type="date" name="publication_date" required value="{{ _POST.publication_date ?? '' }}">
+                </div>
+                <div class="form-group">
+                    <label>Описание *</label>
+                    <textarea name="description" required minlength="50">{{ _POST.description ?? '' }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Цена *</label>
+                    <input type="number" name="price" required step="0.01" value="{{ _POST.price ?? '' }}">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" name="is_featured" value="1" {% if _POST.is_featured is defined %}checked{% endif %}>
+                    <label>Рекомендуемое</label>
+                </div>
+                <button type="submit">Сохранить</button>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h2>Список книг</h2>
+            {% if books is empty %}
+                <p>Книг пока нет.</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- Ссылки сортировки сохраняют engine -->
+                            <th><a href="?sort=title&engine={{ engine }}">Название</a></th>
+                            <th><a href="?sort=author&engine={{ engine }}">Автор</a></th>
+                            <th><a href="?sort=price&engine={{ engine }}">Цена</a></th>
+                            <th><a href="?sort=publication_date&engine={{ engine }}">Дата</a></th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td>{{ book.title }}</td>
+                                <td>{{ book.author }}</td>
+                                <!-- Использование кастомного фильтра -->
+                                <td>{{ book.price | format_price }}</td>
+                                <td>{{ book.publication_date }}</td>
+                                <td>{{ book.description | slice(0, 50) }}...</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
