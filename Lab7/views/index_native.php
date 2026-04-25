@@ -26,7 +26,7 @@
                 </ul>
             <?php endif; ?>
 
-            <!-- ИСПРАВЛЕНИЕ: Явный action с параметром engine -->
+            <!-- Явный action с параметром engine -->
             <form action="?engine=<?= $engine ?>" method="POST">
                 <div class="form-group">
                     <label>Название *</label>
