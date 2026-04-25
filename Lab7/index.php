@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 $validator = new BookValidator();
 $repository = new BookRepository(__DIR__ . '/data/books.json');
 
-// === ЛОГИКА (КОНТРОЛЛЕР) ===
+// ЛОГИКА
 $errors = [];
 $success = false;
 $books = $repository->getAll();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $book = new Book($_POST);
         $repository->save($book->toArray());
-        // ВАЖНО: Сохраняем параметр engine при редиректе, чтобы пользователь остался в том же виде
+        // Сохраняем параметр engine при редиректе, чтобы пользователь остался в том же виде
         header('Location: index.php?status=success&engine=' . $engine);
         exit;
     }
@@ -59,24 +59,24 @@ $viewData = [
     'success' => $success,
     'sortField' => $sortField,
     'sortOrder' => $sortOrder,
-    'engine' => $engine // <-- Передаем engine в шаблоны
+    'engine' => $engine
 ];
 
 // === ВЫБОР ШАБЛОНИЗАТОРА ===
 if ($engine === 'twig') {
-    // --- ВАРИАНТ 1: TWIG ---
+    // ВАРИАНТ 1: TWIG
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/views');
     $twig = new \Twig\Environment($loader, ['cache' => false, 'debug' => true]);
 
     // Кастомный фильтр
     $formatPriceFilter = new \Twig\TwigFilter('format_price', function ($price) {
-        return number_format((float)$price, 2, '.', ' ') . ' ₽';
+        return number_format((float)$price, 2, '.', ' ') . ' MDL';
     });
     $twig->addFilter($formatPriceFilter);
 
     echo $twig->render('index_twig.html.twig', $viewData);
 } else {
-    // --- ВАРИАНТ 2: НАТИВНЫЙ PHP ---
+    // ВАРИАНТ 2: НАТИВНЫЙ PHP
     // Распаковываем массив в переменные
     extract($viewData);
     

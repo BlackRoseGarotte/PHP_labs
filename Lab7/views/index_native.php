@@ -78,7 +78,7 @@
                         <tr>
                             <td><?= htmlspecialchars($book['title']) ?></td>
                             <td><?= htmlspecialchars($book['author']) ?></td>
-                            <td><?= number_format((float)$book['price'], 2, '.', ' ') ?> ₽</td>
+                            <td><?= number_format((float)$book['price'], 2, '.', ' ') ?> MDL</td>
                             <td><?= htmlspecialchars($book['publication_date']) ?></td>
                             <td><?= htmlspecialchars(mb_strimwidth($book['description'], 0, 50, '...')) ?></td>
                         </tr>
