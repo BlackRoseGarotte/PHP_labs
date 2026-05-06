@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список книг</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <header>
+        <h1>Книжный магазин (DB)</h1>
+    </header>
+
+    <main>
+        <a href="create.php?engine={{ engine }}" class="btn">Добавить книгу</a>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th><a href="?sort=title&engine={{ engine }}">Название</a></th>
+                    <th><a href="?sort=author_name&engine={{ engine }}">Автор</a></th>
+                    <th><a href="?sort=price&engine={{ engine }}">Цена</a></th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author_name }}</td>
+                    <td>{{ book.price | price_fmt }}</td>
+                    <td>
+                        <a href="edit.php?id={{ book.id }}&engine={{ engine }}">Ред.</a>
+                        
+                        <!-- Форма удаления с CSRF -->
+                        <form action="index.php?engine={{ engine }}" method="POST" style="display:inline;" onsubmit="return confirm('Удалить?');">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                            <input type="hidden" name="id" value="{{ book.id }}">
+                            <button type="submit" name="action_delete" class="btn-danger">Удал.</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

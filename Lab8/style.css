@@ -1,0 +1,80 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa;
+    color: #2d3748;
+}
+header { text-align: center; margin-bottom: 25px; }
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+}
+.form-section, .table-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; margin-bottom: 4px; font-weight: 600; }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+.checkbox-group { display: flex; align-items: center; gap: 8px; }
+.checkbox-group input { width: auto; margin: 0; }
+button {
+    background: #3182ce;
+    color: #fff;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+button:hover { background: #2b6cb0; }
+.alert { padding: 10px 14px; margin-bottom: 16px; border-radius: 6px; }
+.alert.success { background: #f0fff4; color: #22543d; border: 1px solid #c6f6d5; }
+.alert.error { background: #fff5f5; color: #9b2c2c; border: 1px solid #fed7d7; }
+.alert.error ul { margin: 0; padding-left: 18px; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+th, td { padding: 10px 12px; border: 1px solid #e2e8f0; text-align: left; vertical-align: top; }
+th { background: #edf2f7; font-weight: 600; }
+th a { text-decoration: none; color: #2b6cb0; }
+th a:hover { text-decoration: underline; }
+.desc-cell { 
+    max-width: 400px; 
+    min-width: 300px;
+}
+.desc-cell .desc-short {
+    display: block;
+}
+.desc-cell .desc-full {
+    display: none;
+}
+.desc-cell .show-more-btn {
+    margin-top: 8px;
+    background: #4299e1;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.desc-cell .show-more-btn:hover {
+    background: #3182ce;
+}
+@media (max-width: 900px) {
+    main { grid-template-columns: 1fr; }
+    table, th, td { font-size: 14px; }
+}
